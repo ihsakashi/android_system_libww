@@ -1,0 +1,16 @@
+cc_library_static {
+
+    name: "libww",
+    srcs: [
+        "window_wrapper.cpp",
+    ],
+    export_include_dirs: ["include"],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+    ],
+
+    shared_libs: ["libgui"],
+}
