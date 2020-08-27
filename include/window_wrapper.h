@@ -5,6 +5,7 @@
 
 #include <gui/SurfaceControl.h>
 
+namespace android {
 class WindowSurfaceWrapper : public RefBase {
 public:
     // Creates the window.
@@ -46,3 +47,5 @@ private:
     int mLayer;
     String8 mName;
 };
+
+} // namespace android

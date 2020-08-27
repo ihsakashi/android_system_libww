@@ -12,6 +12,7 @@
 #include <gui/Surface.h>
 #include <ui/DisplayInfo.h>
 
+using namespace android;
 
 WindowSurfaceWrapper::WindowSurfaceWrapper(const String8& name, int32_t layer) {
     mName = name;
