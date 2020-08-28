@@ -7,6 +7,9 @@
 
 #include <window_wrapper.h>
 
+#include <binder/IBinder.h>
+
+#include <gui/SurfaceControl.h>
 #include <gui/SurfaceComposerClient.h>
 #include <gui/ISurfaceComposer.h>
 #include <gui/Surface.h>
@@ -30,8 +33,7 @@ void WindowSurfaceWrapper::onFirstRef() {
     }
  
     // Get main display parameters.
-    sp<IBinder> mainDisplay = SurfaceComposerClient::getBuiltInDisplay(
-            ISurfaceComposer::eDisplayIdMain);
+    sp<IBinder> mainDisplay = SurfaceComposerClient::getInternalDisplayToken();
     DisplayInfo mainDisplayInfo;
     err = SurfaceComposerClient::getDisplayInfo(mainDisplay, &mainDisplayInfo);
     if (err != NO_ERROR) {
@@ -51,7 +53,7 @@ void WindowSurfaceWrapper::onFirstRef() {
         height = mainDisplayInfo.h;
     }
  
-    sp<SurfaceControl> surfaceControl = surfaceComposerClient->createSurface(
+    surfaceControl = surfaceComposerClient->createSurface(
             mName, width, height,
             PIXEL_FORMAT_RGBX_8888, ISurfaceComposerClient::eOpaque);
     if (surfaceControl == NULL || !surfaceControl->isValid()) {
@@ -72,8 +74,10 @@ void WindowSurfaceWrapper::onFirstRef() {
 
 void WindowSurfaceWrapper::swapLayer(int32_t layer) {
     SurfaceComposerClient::Transaction{}
-            .setLayer(surfaceControl, layer)
+            .setLayer(mSurfaceControl, layer)
             .apply();
+    
+    mLayer = layer;
 }
 
 sp<ANativeWindow> WindowSurfaceWrapper::getSurface() const {
