@@ -1,9 +1,10 @@
 cc_library_shared {
-
     name: "libww",
+
     srcs: [
         "window_wrapper.cpp",
     ],
+
     export_include_dirs: ["include"],
 
     cflags: [
@@ -12,5 +13,11 @@ cc_library_shared {
         "-Werror",
     ],
 
-    shared_libs: ["libgui"],
+    shared_libs: [
+        "liblog",
+        "libbinder",
+        "libui",
+        "libgui",
+        "libutils",
+    ],
 }
