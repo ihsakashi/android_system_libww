@@ -53,7 +53,7 @@ void WindowSurfaceWrapper::onFirstRef() {
         height = mainDisplayInfo.h;
     }
  
-    surfaceControl = surfaceComposerClient->createSurface(
+    sp<SurfaceControl> surfaceControl = surfaceComposerClient->createSurface(
             mName, width, height,
             PIXEL_FORMAT_RGBX_8888, ISurfaceComposerClient::eOpaque);
     if (surfaceControl == NULL || !surfaceControl->isValid()) {

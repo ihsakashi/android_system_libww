@@ -4,18 +4,19 @@
  */
 
 #include <gui/SurfaceControl.h>
+#include <gui/Surface.h>
 
 namespace android {
 class WindowSurfaceWrapper : public RefBase {
 public:
     // Creates the window.
-    WindowSurfaceWrapper(const String8& name);
+    WindowSurfaceWrapper(const String8& name, int32_t layer);
  
     virtual ~WindowSurfaceWrapper() {}
  
     virtual void onFirstRef();
 
-    void swapLayer();
+    void swapLayer(int32_t layer);
 
     // Retrieves a handle to the window.
     sp<ANativeWindow>  getSurface() const;
