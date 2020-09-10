@@ -29,16 +29,9 @@ extern "C" void framebuffer_swap(FramebufferState *s) {
   assert(glGetError() == GL_NO_ERROR);
 }
 
-extern "C" void framebuffer_swap_layer(FramebufferState *S, int32_t layer) {
+extern "C" void framebuffer_swap_layer(FramebufferState *s, int32_t layer) {
   s->windowSurface->swapLayer(layer);
 }
-
-extern "C" bool set_brightness(int brightness) {
-  return false;
-}
-
-
-extern "C" void framebuffer_set_power(FramebufferState *s, int mode) {}
 
 extern "C" FramebufferState* framebuffer_init(
     const char* name, int32_t layer, int alpha,
@@ -48,8 +41,8 @@ extern "C" FramebufferState* framebuffer_init(
 
   FramebufferState *s = new FramebufferState;
 
-  sp<ProcessState> proc(ProcessState::self());
-  ProcessState::self()->startThreadPool();
+  //sp<ProcessState> proc(ProcessState::self());
+  //ProcessState::self()->startThreadPool();
 
   s->windowSurface = new WindowSurfaceWrapper(String8(name), layer); 
 
@@ -105,7 +98,7 @@ extern "C" FramebufferState* framebuffer_init(
 
   printf("gl version %s\n", glGetString(GL_VERSION));
 
-  IPCThreadState::self()->joinThreadPool();
+  //IPCThreadState::self()->joinThreadPool();
 
   if (out_w) *out_w = w;
   if (out_h) *out_h = h;
