@@ -19,7 +19,7 @@ cc_library_shared {
 }
 
 cc_library_static {
-    name: "openpilot-framebuffer",
+    name: "libframebuffer2",
 
     srcs: [
         "framebuffer2.cpp",
