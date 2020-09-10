@@ -73,7 +73,7 @@ extern "C" FramebufferState* framebuffer_init(
   //success = eglChooseConfig(s->display, attribs, &s->config, 1, &num_configs);
   //assert(success);
 
-  s->window = s->windowSurface.getSurface().get();
+  s->window = s->windowSurface->getSurface().get();
   success = EGLUtils::selectConfigForNativeWindow(s->display, attribs, s->window, &s->config);
   assert(success);
   printf("EGLUtils::selectConfigForNativeWindow() returned %d", success);
