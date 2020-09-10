@@ -36,7 +36,6 @@ extern "C" void framebuffer_swap_layer(FramebufferState *s, int32_t layer) {
 extern "C" FramebufferState* framebuffer_init(
     const char* name, int32_t layer, int alpha,
     int *out_w, int *out_h) {
-  status_t status;
   int success;
 
   FramebufferState *s = new FramebufferState;
