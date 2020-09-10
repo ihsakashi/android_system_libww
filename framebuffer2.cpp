@@ -11,6 +11,7 @@
 #include <window_wrapper.h>
 #include <EGLUtils.h>
 
+using namespace android;
 struct FramebufferState {
     sp<WindowSurfaceWrapper> windowSurface;
 
@@ -80,7 +81,7 @@ extern "C" FramebufferState* framebuffer_init(
   //assert(success);
 
   s->window = s->windowSurface.getSurface().get();
-  success = EGLUtils::selectConfigForNativeWindow(s->display, attribs, s->window, &&s->config);
+  success = EGLUtils::selectConfigForNativeWindow(s->display, attribs, s->window, &s->config);
   assert(success);
   printf("EGLUtils::selectConfigForNativeWindow() returned %d", success);
 
