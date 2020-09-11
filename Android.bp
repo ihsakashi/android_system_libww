@@ -18,7 +18,7 @@ cc_library_shared {
     cflags: ["-Wall", "-Werror"],
 }
 
-cc_library_static {
+cc_library_shared {
     name: "libframebuffer2",
 
     srcs: [
