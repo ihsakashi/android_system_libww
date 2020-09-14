@@ -34,5 +34,6 @@ cc_library_shared {
         "libgui",
         "libbinder",
         "liblog",
+        "libutils",
     ],
 }
