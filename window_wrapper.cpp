@@ -43,8 +43,8 @@ void WindowSurfaceWrapper::onFirstRef() {
  
     // landscape
     uint32_t width, height;
-    if (mainDisplayInfo.orientation != DISPLAY_ORIENTATION_90 &&
-            mainDisplayInfo.orientation != DISPLAY_ORIENTATION_270) {
+    if (mainDisplayInfo.orientation != DISPLAY_ORIENTATION_0 &&
+            mainDisplayInfo.orientation != DISPLAY_ORIENTATION_180) {
         // rotated
         width = mainDisplayInfo.h;
         height = mainDisplayInfo.w;
